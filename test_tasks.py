@@ -17,9 +17,11 @@ columns=['Id', 'Name', 'Surname', 'Age', 'Job', 'Datetime'])
 df_1 = df.copy()
 def condition_1(data):
     if 'Developer' in data['Job'] and data['Age'] > 18 and data['Age'] <= 21:
-        return time(hour=9, minute=0)
+        return data['Datetime'].replace(hour=9, minute=0, second = 0)
     elif 'Developer' in data['Job']:
-        return time(hour=9, minute=15)
+        return data['Datetime'].replace(hour=9, minute=15, second = 0)
+    else:
+        return '-'
 
 df_1['TimeToEnter'] = df_1.apply(condition_1, axis=1)
 print('Condition 1:\n', df_1)
@@ -58,5 +60,16 @@ def dataframeToExcel(filename, df, sheet_name='Sheet1', origin=(1,1)):
 
 #Transform dataframe 1 to excel
 dataframeToExcel('df_1.xlsx', df_1)
+
+############ Load dataframe 1 to MongoDB #######
+
+from pymongo import MongoClient
+client =  MongoClient("mongodb+srv://licman:80ratito@cluster0.6hvfvbh.mongodb.net/test")
+db = client['task_db']
+collection = db['18MoreAnd21andLess']
+df_1.reset_index(inplace=True)
+data_dict = df_1.to_dict("records")
+# Insert collection
+collection.insert_many(data_dict)
 
 ####################### CONDITION 2 ######################
