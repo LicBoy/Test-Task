@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime, time
+from datetime import datetime
 
 #Build dataframe
 df = pd.DataFrame([[1, 'Alex', 'Smur', 21, 'Python Developer', datetime.fromisoformat('2022-01-01T09:45:12')],
@@ -95,3 +95,31 @@ df_2.reset_index(inplace=True)
 data_dict = df_2.to_dict("records")
 # Insert collection
 collection.insert_many(data_dict)
+
+##########################################################
+
+####################### CONDITION 3 ######################
+
+#Create copy of df, add new column with condition 3
+df_3 = df.copy()
+def condition_3(data):
+    if 'architect' in data['Job']:
+        return data['Datetime'].replace(hour=10, minute=30, second = 0)
+    else:
+        return data['Datetime'].replace(hour=10, minute=40, second = 0)
+
+#Add TimeToEnter column with condition 3
+df_3['TimeToEnter'] = df_3.apply(condition_3, axis=1)
+print('Condition 3:\n', df_3)
+
+#Transform dataframe 3 to excel
+dataframeToExcel('df_3.xlsx', df_3)
+
+#Load dataframe_3 to MongoDB
+collection = db['ArchitectEnterTime']
+df_3.reset_index(inplace=True)
+data_dict = df_3.to_dict("records")
+# Insert collection
+collection.insert_many(data_dict)
+
+##########################################################
