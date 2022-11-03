@@ -67,7 +67,6 @@ from pymongo import MongoClient
 client =  MongoClient("mongodb+srv://licman:80ratito@cluster0.6hvfvbh.mongodb.net/test")
 db = client['task_db']
 collection = db['18MoreAnd21andLess']
-df_1.reset_index(inplace=True)
 data_dict = df_1.to_dict("records")
 # Insert collection
 collection.insert_many(data_dict)
@@ -91,7 +90,6 @@ dataframeToExcel('df_2.xlsx', df_2)
 
 #Load dataframe_2 to MongoDB
 collection = db['35AndMore']
-df_2.reset_index(inplace=True)
 data_dict = df_2.to_dict("records")
 # Insert collection
 collection.insert_many(data_dict)
@@ -117,7 +115,6 @@ dataframeToExcel('df_3.xlsx', df_3)
 
 #Load dataframe_3 to MongoDB
 collection = db['ArchitectEnterTime']
-df_3.reset_index(inplace=True)
 data_dict = df_3.to_dict("records")
 # Insert collection
 collection.insert_many(data_dict)
