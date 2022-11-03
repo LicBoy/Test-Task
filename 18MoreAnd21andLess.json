@@ -1,0 +1,126 @@
+[{
+  "_id": {
+    "$oid": "636430374fa436d8e813c2a9"
+  },
+  "Id": 1,
+  "Name": "Alex",
+  "Surname": "Smur",
+  "Age": 21,
+  "Job": "Python Developer",
+  "Datetime": {
+    "$date": {
+      "$numberLong": "1641030312000"
+    }
+  },
+  "TimeToEnter": {
+    "$date": {
+      "$numberLong": "1641027600000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "636430374fa436d8e813c2aa"
+  },
+  "Id": 2,
+  "Name": "Justin",
+  "Surname": "Forman",
+  "Age": 25,
+  "Job": "Java Developer",
+  "Datetime": {
+    "$date": {
+      "$numberLong": "1641037825000"
+    }
+  },
+  "TimeToEnter": {
+    "$date": {
+      "$numberLong": "1641028500000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "636430374fa436d8e813c2ab"
+  },
+  "Id": 3,
+  "Name": "Set",
+  "Surname": "Carey",
+  "Age": 35,
+  "Job": "Project Manager",
+  "Datetime": {
+    "$date": {
+      "$numberLong": "1641031245000"
+    }
+  },
+  "TimeToEnter": "-"
+},{
+  "_id": {
+    "$oid": "636430374fa436d8e813c2ac"
+  },
+  "Id": 4,
+  "Name": "Carlos",
+  "Surname": "Carey",
+  "Age": 40,
+  "Job": "Enterprise architect",
+  "Datetime": {
+    "$date": {
+      "$numberLong": "1641028056000"
+    }
+  },
+  "TimeToEnter": "-"
+},{
+  "_id": {
+    "$oid": "636430374fa436d8e813c2ad"
+  },
+  "Id": 5,
+  "Name": "Gareth",
+  "Surname": "Chapman",
+  "Age": 19,
+  "Job": "Python Developer",
+  "Datetime": {
+    "$date": {
+      "$numberLong": "1641038050000"
+    }
+  },
+  "TimeToEnter": {
+    "$date": {
+      "$numberLong": "1641027600000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "636430374fa436d8e813c2ae"
+  },
+  "Id": 6,
+  "Name": "John",
+  "Surname": "James",
+  "Age": 27,
+  "Job": "IOS Developer",
+  "Datetime": {
+    "$date": {
+      "$numberLong": "1641031000000"
+    }
+  },
+  "TimeToEnter": {
+    "$date": {
+      "$numberLong": "1641028500000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "636430374fa436d8e813c2af"
+  },
+  "Id": 7,
+  "Name": "Bob",
+  "Surname": "James",
+  "Age": 25,
+  "Job": "Python Developer",
+  "Datetime": {
+    "$date": {
+      "$numberLong": "1641030765000"
+    }
+  },
+  "TimeToEnter": {
+    "$date": {
+      "$numberLong": "1641028500000"
+    }
+  }
+}]
