@@ -73,3 +73,25 @@ data_dict = df_1.to_dict("records")
 collection.insert_many(data_dict)
 
 ####################### CONDITION 2 ######################
+
+#Create copy of df, add new column with condition 2
+df_2 = df.copy()
+def condition_2(data):
+    if not ('Developer' in data['Job'] or 'Manager' in data['Job']) and data['Age'] >= 35:
+        return data['Datetime'].replace(hour=11, minute=0, second = 0)
+    else:
+        return data['Datetime'].replace(hour=11, minute=30, second = 0)
+
+#Add TimeToEnter column with condition 2
+df_2['TimeToEnter'] = df_2.apply(condition_2, axis=1)
+print('Condition 2:\n', df_2)
+
+#Transform dataframe 2 to excel
+dataframeToExcel('df_2.xlsx', df_2)
+
+#Load dataframe_2 to MongoDB
+collection = db['35AndMore']
+df_2.reset_index(inplace=True)
+data_dict = df_2.to_dict("records")
+# Insert collection
+collection.insert_many(data_dict)
