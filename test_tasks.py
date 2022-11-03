@@ -25,4 +25,38 @@ df_1['TimeToEnter'] = df_1.apply(condition_1, axis=1)
 print('Condition 1:\n', df_1)
 
 ##########################################################
+import pyexcelerate
+
+#Function for transforming dataframe to excel
+def dataframeToExcel(filename, df, sheet_name='Sheet1', origin=(1,1)):
+    wb = pyexcelerate.Workbook()
+    ws = wb.new_sheet(sheet_name)
+
+    columns = df.columns.tolist()
+    ro = origin[0]
+    co = origin[1]
+    ws.range((ro, co), (ro, co+len(columns))).value = [[*columns]]
+    
+    # Write the data
+    row_num = df.shape[0]    
+    col_num = df.shape[1]
+    ro = origin[0]+1
+    co = origin[1]
+    ws.range((ro, co), (ro+row_num,co+col_num)).value = df.values.tolist()
+
+    #Columns styling
+    #Make datetime cells bigger and change their formatting
+    longRawStyle = pyexcelerate.Style(size=-1)
+    ws.set_col_style(5, longRawStyle)
+    ws.set_col_style(6, longRawStyle)
+    for i in range(ro, ro+row_num):
+        ws.set_cell_style(i, 6, pyexcelerate.Style(format=pyexcelerate.Format('dd.mm.yy hh:mm')))
+    ws.set_col_style(7, longRawStyle)
+    for i in range(ro, ro+row_num):
+        ws.set_cell_style(i, 7, pyexcelerate.Style(format=pyexcelerate.Format('hh:mm')))
+    wb.save(filename)
+
+#Transform dataframe 1 to excel
+dataframeToExcel('df_1.xlsx', df_1)
+
 ####################### CONDITION 2 ######################
